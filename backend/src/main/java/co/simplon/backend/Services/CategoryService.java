@@ -2,9 +2,11 @@ package co.simplon.backend.Services;
 
 import co.simplon.backend.Entities.Category;
 import co.simplon.backend.Repositories.CategoryRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoryService {
 
     private CategoryRepository categoryRepository;

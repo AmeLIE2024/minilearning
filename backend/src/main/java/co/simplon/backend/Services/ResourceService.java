@@ -4,11 +4,13 @@ import co.simplon.backend.Entities.Resource;
 import co.simplon.backend.Enums.Status;
 import co.simplon.backend.Enums.Type;
 import co.simplon.backend.Repositories.ResourceRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class ResourceService {
 
     private ResourceRepository resourceRepository;
@@ -17,7 +19,7 @@ public class ResourceService {
         this.resourceRepository = resourceRepository;
 
     }
-    public List<Resource> findAllResource(Resource resource) {
+    public List<Resource> findAllResource() {
         return resourceRepository.findAll();
     }
     public Optional<Resource> findResourceById(UUID id) {
