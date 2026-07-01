@@ -3,7 +3,6 @@ package co.simplon.backend;
 import co.simplon.backend.Enums.Status;
 import co.simplon.backend.Enums.Type;
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -12,8 +11,8 @@ import java.util.UUID;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "ressource")
-public class Ressource {
+@Table(name = "Resource")
+public class Resource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -36,7 +35,7 @@ public class Ressource {
     @ManyToOne
     private Category category;
 
-    public Ressource() {
+    public Resource() {
     }
 
     public UUID getId() {

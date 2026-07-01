@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name = "Category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -13,7 +14,7 @@ public class Category {
     private String description;
 
     @OneToOne
-    private Ressource ressource;
+    private Resource resource;
 
     public Category() {
     }
@@ -34,12 +35,12 @@ public class Category {
         this.name = name;
     }
 
-    public Ressource getRessource() {
-        return ressource;
+    public Resource getResource() {
+        return resource;
     }
 
-    public void setRessource(Ressource ressource) {
-        this.ressource = ressource;
+    public void setRessource(Resource resource) {
+        this.resource = resource;
     }
 
     public String getDescription() {
