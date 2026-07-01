@@ -1,4 +1,4 @@
-package co.simplon.backend;
+package co.simplon.backend.Entities;
 
 import jakarta.persistence.*;
 
