@@ -1,4 +1,4 @@
-package co.simplon.backend.Repository;
+package co.simplon.backend.Repositories;
 
 import co.simplon.backend.Entities.Category;
 import co.simplon.backend.Entities.Resource;
