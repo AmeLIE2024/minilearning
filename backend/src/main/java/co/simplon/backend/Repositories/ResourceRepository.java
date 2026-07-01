@@ -8,9 +8,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ResourceRepository extends JpaRepository<Resource, UUID> {
-
-    List<Resource> findAll();
     List<Resource> findAllByCategory(Category category);
-    Optional<Resource> findById(UUID id);
-
 }
