@@ -25,15 +25,18 @@ public class Resource {
 
     private String url;
 
+    @Enumerated(EnumType.STRING)
     private Type type;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @CreatedDate
     @Column(updatable = false)
     private LocalDate createdAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public Resource() {
