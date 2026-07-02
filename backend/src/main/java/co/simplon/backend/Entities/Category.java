@@ -2,6 +2,8 @@ package co.simplon.backend.Entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -13,8 +15,8 @@ public class Category {
     private String name;
     private String description;
 
-    @OneToOne
-    private Resource resource;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Resource> resources = new ArrayList<>();
 
     public Category() {
     }
@@ -35,12 +37,17 @@ public class Category {
         this.name = name;
     }
 
-    public Resource getResource() {
-        return resource;
+    public List<Resource> getResources() {
+        return resources;
     }
 
-    public void setRessource(Resource resource) {
-        this.resource = resource;
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
+    }
+
+    public void addResource(Resource resource) {
+        resources.add(resource);
+        resource.setCategory(this);
     }
 
     public String getDescription() {
@@ -51,5 +58,3 @@ public class Category {
         this.description = description;
     }
 }
-
-
