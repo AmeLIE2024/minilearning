@@ -25,8 +25,8 @@ public class ResourceService {
     public Optional<Resource> findResourceById(UUID id) {
        return resourceRepository.findById(id);
     }
-    public void createResource(Resource resource) {
-        resourceRepository.save(resource);
+    public Resource createResource(Resource resource) {
+        return resourceRepository.save(resource);
     }
     public List<Resource> findResourceByType(Type type) {
         return resourceRepository.findAllByType(type);

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class Resource {
 
     @CreatedDate
     @Column(updatable = false)
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @ManyToOne
     private Category category;
@@ -86,11 +87,11 @@ public class Resource {
         this.status = status;
     }
 
-    public Date getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 

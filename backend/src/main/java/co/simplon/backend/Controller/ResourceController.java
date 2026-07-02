@@ -1,9 +1,7 @@
 package co.simplon.backend.Controller;
 
 import co.simplon.backend.Entities.Resource;
-import co.simplon.backend.Repositories.ResourceRepository;
 import co.simplon.backend.Services.ResourceService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +19,8 @@ public class ResourceController {
     }
 
     @GetMapping
-    public List<Resource>getAllResources() {
+    public List<Resource> getAllResources() {
+
         return this.resourceService.findAllResource();
     }
 
@@ -31,11 +30,9 @@ public class ResourceController {
     }
 
     @PostMapping
-    public void  createResource (@RequestBody Resource resource) {
-        this.resourceService.createResource(resource);
+    public Resource createResource(@RequestBody Resource resource) {
+       return this.resourceService.createResource(resource);
     }
-
-
 
 
 }
