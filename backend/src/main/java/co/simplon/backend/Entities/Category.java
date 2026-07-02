@@ -1,5 +1,6 @@
 package co.simplon.backend.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Resource> resources = new ArrayList<>();
 
     public Category() {
