@@ -1,5 +1,3 @@
-
-
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { createCategory } from "../Api";
@@ -45,5 +43,4 @@ export default function CategoryForm() {
       <button type="submit">Enregistrer</button>
     </form>
   );
-
 }
