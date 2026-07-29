@@ -38,6 +38,13 @@ export default function Resource() {
 
   return (
     <>
+      <div className="top-nav">
+        <Link to="/ressources" className="nav-btn active">Ressources</Link>
+        <Link to="/categorie" className="nav-btn">Catégories</Link>
+        <Link to="/ressource/form" className="nav-btn">Ajouter une ressource</Link>
+        <Link to="/categorie/form" className="nav-btn">Ajouter une catégorie</Link>
+      </div>
+
       <h1 className="page-title">Ressources</h1>
       <p className="page-subtitle">Découvrez vos ressources de formation par catégorie et statut.</p>
 

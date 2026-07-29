@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router"
+import { Link, useParams } from "react-router"
 import type { ResourceProps } from "./Resource";
 import { loadResourceById } from "../Api";
 
@@ -17,6 +17,7 @@ export default function ResourceDetail() {
     const createdAtDate = new Date(resourceDetail.createdAt);
     return (
         <>
+            <Link to="/" className="nav-btn">← Retour à l'accueil</Link>
             <article className="detail-card">
                 <div className="tag-row">
                     <span className="fr-tag">{resourceDetail.category.name}</span>

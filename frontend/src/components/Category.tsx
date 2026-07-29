@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router";
 import { loadCategories } from "../Api";
 
 export interface Category {
@@ -17,6 +18,7 @@ export default function CategoryList() {
     }, [])
     return (
         <>
+            <Link to="/" className="nav-btn">← Retour à l'accueil</Link>
             <h1 className="page-title">Catégories</h1>
             <p className="page-subtitle">Organisez vos ressources par thème.</p>
             <ul className="resource-list">

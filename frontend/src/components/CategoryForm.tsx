@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { createCategory } from "../Api";
 
 type CategoryFormData = {
@@ -17,36 +17,37 @@ export default function CategoryForm() {
     } = useForm<CategoryFormData>();
 
     return (
-        <form
-            className="form-card"
-            onSubmit={handleSubmit((data) => {
-                createCategory(data).then(() => navigate("/categorie"));
-            })}
-        >
-            <h1 className="page-title">Ajouter une catégorie</h1>
-            <div className="field-group">
-                <label>Nom de la catégorie</label>
+        <><Link to="/" className="nav-btn">← Retour à l'accueil</Link>
+            <form
+                className="form-card"
+                onSubmit={handleSubmit((data) => {
+                    createCategory(data).then(() => navigate("/categorie"));
+                })}
+            >
+                <h1 className="page-title">Ajouter une catégorie</h1>
+                <div className="field-group">
+                    <label>Nom de la catégorie</label>
 
-                <input
-                    {...register("name", { required: true })}
-                    placeholder="Nom"
-                />
+                    <input
+                        {...register("name", { required: true })}
+                        placeholder="Nom"
+                    />
 
-                {errors.name && <span>Ce champ est requis</span>}
-            </div>
+                    {errors.name && <span>Ce champ est requis</span>}
+                </div>
 
-            <div className="field-group">
-                <label>Description</label>
+                <div className="field-group">
+                    <label>Description</label>
 
-                <textarea
-                    {...register("description", { required: true })}
-                    placeholder="Description"
-                />
+                    <textarea
+                        {...register("description", { required: true })}
+                        placeholder="Description"
+                    />
 
-                {errors.description && <span>Ce champ est requis</span>}
-            </div>
+                    {errors.description && <span>Ce champ est requis</span>}
+                </div>
 
-            <button type="submit">Enregistrer</button>
-        </form>
+                <button type="submit">Enregistrer</button>
+            </form></>
     );
 }

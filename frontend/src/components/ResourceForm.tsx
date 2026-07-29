@@ -3,7 +3,7 @@ import type { ResourceProps } from "./Resource";
 import { useEffect, useState } from "react";
 import type { Category } from "./Category";
 import { createResource, loadCategories } from "../Api";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export type ResourceFormData = Omit<ResourceProps, "id" | "createdAt" | "category"> & {
   categoryId: string;
@@ -28,6 +28,7 @@ export default function ResourceForm() {
 
   return (
     <>
+      <Link to="/" className="nav-btn">← Retour à l'accueil</Link>
       <form
         className="form-card"
         onSubmit={handleSubmit((data) => {
