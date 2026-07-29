@@ -9,16 +9,16 @@ import CategoryForm from "./components/CategoryForm.tsx";
 function App() {
   return (
     <>
-    
-    <Routes>
-      <Route path="ressources" element={<Resource/>}/>
-      <Route path="ressource/form" element={<ResourceForm/>}/>
-      <Route path="ressources/:id" element={<ResourceDetail/>}/>
-      <Route path="categorie" element={<Category/>}/>
-      <Route path="categorie/form" element={<CategoryForm/>}/>
-    </Routes>
-   
-      
+      <Routes>
+        <Route path="/" element={<Resource />} />
+        <Route path="ressources" element={<Resource />} />
+        <Route path="ressource/form" element={<ResourceForm />} />
+        <Route path="ressources/:id" element={<ResourceDetail />} />
+        <Route path="categorie" element={<Category />} />
+        <Route path="categorie/form" element={<CategoryForm />} />
+      </Routes>
+
+
     </>
   );
 }
