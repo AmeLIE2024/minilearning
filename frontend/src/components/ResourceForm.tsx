@@ -3,7 +3,6 @@ import type { ResourceProps } from "./Resource";
 import { useEffect, useState } from "react";
 import type { Category } from "./Category";
 import { createResource, loadCategories } from "../Api";
-import Resource from "./Resource";
 import { useNavigate } from "react-router";
 
 export type ResourceFormData = Omit<ResourceProps, "id" | "createdAt" | "category"> & {

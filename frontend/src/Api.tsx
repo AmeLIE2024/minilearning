@@ -5,12 +5,13 @@ import type { ResourceFormData } from "./components/ResourceForm.tsx";
 const API_Resources = "http://localhost:8080/api/resources";
 const API_Category = "http://localhost:8080/api/categories";
 
+
+
 export function loadResources(): Promise<ResourceProps[]> {
   return fetch(API_Resources).then((response) => response.json());
 }
 
-
-export function loadResourceById(id:string): Promise<ResourceProps> {
+export function loadResourceById(id: string): Promise<ResourceProps> {
   return fetch(`${API_Resources}/${id}`).then((response) => response.json());
 }
 
@@ -18,27 +19,34 @@ export function loadCategories(): Promise<Category[]> {
   return fetch(API_Category).then((response) => response.json());
 }
 
-export function loadCategoryById(id:string): Promise<Category> {
+export function loadCategoryById(id: string): Promise<Category> {
   return fetch(`${API_Category}/${id}`).then((response) => response.json());
 }
 
-export function createResource(data: ResourceFormData): Promise<ResourceProps>{
-  const { categoryId, ...rest}= data;
+export function createResource(data: ResourceFormData): Promise<ResourceProps> {
+  const { categoryId, ...rest } = data;
 
   const payload = {
     ...rest,
-    category: {id: categoryId}
-  }
+    category: { id: categoryId },
+  };
 
-  return fetch(API_Resources,{
-    method:"POST",
-    headers: { "Content-Type": "application/json"},
+  return fetch(API_Resources, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
-  })
-  .then((response) => response.json())
-
+  }).then((response) => response.json());
 }
 
-export function createCategory(data:): Promise<Category>{
-  const {}
+export function createCategory(data: CategoryFormData): Promise<Category> {
+  return fetch(API_Category, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Erreur lors de la création de la catégorie");
+    }
+    return response.json();
+  });
 }
