@@ -8,7 +8,7 @@ import CategoryForm from "./components/CategoryForm.tsx";
 
 function App() {
   return (
-    <>
+    <div className="app-shell">
       <Routes>
         <Route path="/" element={<Resource />} />
         <Route path="ressources" element={<Resource />} />
@@ -17,9 +17,7 @@ function App() {
         <Route path="categorie" element={<Category />} />
         <Route path="categorie/form" element={<CategoryForm />} />
       </Routes>
-
-
-    </>
+    </div>
   );
 }
 

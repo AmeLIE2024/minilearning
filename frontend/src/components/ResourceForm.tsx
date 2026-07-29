@@ -18,7 +18,7 @@ export default function ResourceForm() {
 
   const [categoryList, setCategoryList] = useState<Category[]>([]);
 
-  
+
   useEffect(() => {
     loadCategories().then((data) => setCategoryList(data));
   }, []);
@@ -29,51 +29,69 @@ export default function ResourceForm() {
   return (
     <>
       <form
+        className="form-card"
         onSubmit={handleSubmit((data) => {
-           createResource(data)
-           .then (()=>navigate("/ressources"));
+          createResource(data)
+            .then(() => navigate("/ressources"));
           return data
         })}
       >
-        <label>Titre de la ressource</label>
-        <input
-          {...register("title", { required: true, maxLength: 50 })}
-          placeholder="Titre"
-        />
-        {errors.title && <span>Ce champ est requis</span>}
-        <input
-          {...register("description", { required: true, maxLength: 500 })}
-          placeholder="Description"
-        />
-        {errors.description && <span>Ce champ est requis</span>}
-        <input {...register("url")} placeholder="Lien url" />
+        <h1 className="page-title">Ajouter une ressource</h1>
+        <div className="field-group">
+          <label>Titre de la ressource</label>
+          <input
+            {...register("title", { required: true, maxLength: 50 })}
+            placeholder="Titre"
+          />
+          {errors.title && <span>Ce champ est requis</span>}
+        </div>
+        <div className="field-group">
+          <label>Description</label>
+          <textarea
+            {...register("description", { required: true, maxLength: 500 })}
+            placeholder="Description"
+          />
+          {errors.description && <span>Ce champ est requis</span>}
+        </div>
+        <div className="field-group">
+          <label>Lien URL</label>
+          <input {...register("url")} placeholder="Lien url" />
+        </div>
 
-        <select id="type" {...register("type", { required: true })}>
-          <option value="">Choisir un type</option>
-          <option value="ARTICLE">Article</option>
-          <option value="VIDEO">Vidéo</option>
-          <option value="DOCUMENTATION">Documentation</option>
-          <option value="COURSE">Cours</option>
-          <option value="OTHER">Autre</option>
-        </select>
-        {errors.type && <span>Ce champ est requis</span>}
-        <select id="status" {...register("status", { required: true })}>
-          <option value="">Choisir un statut</option>
-          <option value="TODO">A faire</option>
-          <option value="IN_PROGRESS">En cours</option>
-          <option value="DONE">Terminé</option>
-        </select>
-        {errors.status && <span>Ce champ est requis</span>}
-        <select id="category" {...register("categoryId", { required: true })}>
-          <option value="">Choisir une catégorie</option>
-          {categoryList.map((category) => (
-            <option key={category.id} value={category.id}>{category.name}</option>
-          ))}
-        </select>
-        {errors.status && <span>Ce champ est requis</span>}
+        <div className="field-group">
+          <label>Type</label>
+          <select id="type" {...register("type", { required: true })}>
+            <option value="">Choisir un type</option>
+            <option value="ARTICLE">Article</option>
+            <option value="VIDEO">Vidéo</option>
+            <option value="DOCUMENTATION">Documentation</option>
+            <option value="COURSE">Cours</option>
+            <option value="OTHER">Autre</option>
+          </select>
+          {errors.type && <span>Ce champ est requis</span>}
+        </div>
+        <div className="field-group">
+          <label>Statut</label>
+          <select id="status" {...register("status", { required: true })}>
+            <option value="">Choisir un statut</option>
+            <option value="TODO">A faire</option>
+            <option value="IN_PROGRESS">En cours</option>
+            <option value="DONE">Terminé</option>
+          </select>
+          {errors.status && <span>Ce champ est requis</span>}
+        </div>
+        <div className="field-group">
+          <label>Catégorie</label>
+          <select id="category" {...register("categoryId", { required: true })}>
+            <option value="">Choisir une catégorie</option>
+            {categoryList.map((category) => (
+              <option key={category.id} value={category.id}>{category.name}</option>
+            ))}
+          </select>
+          {errors.categoryId && <span>Ce champ est requis</span>}
+        </div>
 
-        <button type="submit" >Enregistrer</button>
-        
+        <button type="submit">Enregistrer</button>
       </form>
     </>
   );

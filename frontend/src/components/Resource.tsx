@@ -38,9 +38,10 @@ export default function Resource() {
 
   return (
     <>
-      <h1>Ressources</h1>
+      <h1 className="page-title">Ressources</h1>
+      <p className="page-subtitle">Découvrez vos ressources de formation par catégorie et statut.</p>
 
-      <div>
+      <div className="filters">
         <select
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
@@ -64,12 +65,14 @@ export default function Resource() {
         </select>
       </div>
 
-      <ul>
+      <ul className="resource-list">
         {filteredResources.map((resource) => (
-          <li key={resource.id}>
-            <p className="fr-tag">{resource.type}</p>
-            <p className="fr-tag">{resource.status}</p>
-            <p className="fr-tag">{resource.category.name}</p>
+          <li key={resource.id} className="resource-card">
+            <div className="tag-row">
+              <span className="fr-tag">{resource.type}</span>
+              <span className="fr-tag">{resource.status}</span>
+              <span className="fr-tag">{resource.category.name}</span>
+            </div>
 
             <Link to={`/ressources/${resource.id}`}>
               <h2>{resource.title}</h2>

@@ -1,0 +1,133 @@
+.app-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
+}
+
+.page-title {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    color: #111827;
+}
+
+.page-subtitle {
+    margin: 0 0 20px;
+    color: #64748b;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.filters select,
+.form-card input,
+.form-card select,
+.form-card textarea,
+.form-card button {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.filters select {
+    max-width: 220px;
+}
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+}
+
+.resource-card,
+.form-card,
+.detail-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.fr-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.resource-card h2,
+.detail-card h2 {
+    margin: 8px 0 6px;
+    color: #111827;
+}
+
+.resource-card p,
+.detail-card p {
+    margin: 4px 0;
+    color: #475569;
+}
+
+.form-card {
+    max-width: 620px;
+    margin: 8px auto 0;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.form-card label {
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-card button {
+    margin-top: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.form-card button:hover {
+    background: #1d4ed8;
+}
+
+.form-card span {
+    color: #dc2626;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .app-shell {
+        padding: 16px 14px 32px;
+    }
+
+    .page-title {
+        font-size: 1.6rem;
+    }
+}

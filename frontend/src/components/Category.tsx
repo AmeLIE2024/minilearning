@@ -7,24 +7,26 @@ export interface Category {
     description: string
 }
 
-export default function CategoryList(){
+export default function CategoryList() {
 
     const [categoryList, setCategoryList] = useState<Category[]>([]);
 
-    useEffect(()=> {
+    useEffect(() => {
         loadCategories()
-        .then((data) => setCategoryList(data))
-    },[])
+            .then((data) => setCategoryList(data))
+    }, [])
     return (
         <>
-        <ul>
-            {categoryList.map((category)=>(
-                <li key={category.id}>
-                    <h2>{category.name}</h2>
-                    <p>{category.description}</p>
-                </li>
-            ))}
-        </ul>
+            <h1 className="page-title">Catégories</h1>
+            <p className="page-subtitle">Organisez vos ressources par thème.</p>
+            <ul className="resource-list">
+                {categoryList.map((category) => (
+                    <li key={category.id} className="resource-card">
+                        <h2>{category.name}</h2>
+                        <p>{category.description}</p>
+                    </li>
+                ))}
+            </ul>
 
         </>
     )
