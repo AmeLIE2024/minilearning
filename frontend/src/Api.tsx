@@ -38,15 +38,15 @@ export function createResource(data: ResourceFormData): Promise<ResourceProps> {
   }).then((response) => response.json());
 }
 
-export function createCategory(data: CategoryFormData): Promise<Category> {
+
+export function createCategory(
+  data: { name: string; description: string }
+): Promise<Category> {
   return fetch(API_Category, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(data),
-  }).then((response) => {
-    if (!response.ok) {
-      throw new Error("Erreur lors de la création de la catégorie");
-    }
-    return response.json();
-  });
+  }).then((response) => response.json());
 }
