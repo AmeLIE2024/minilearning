@@ -1,0 +1,351 @@
+/* ============================================================
+   MINILEARNING — thème "Quest Log" arcade néon
+   Chaque ressource = une quête. Chaque statut = une étape de jeu.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  /* Couleurs */
+  --bg: #0f0c1a;
+  --bg-alt: #171225;
+  --panel: #1e1930;
+  --panel-border: #34294f;
+  --pink: #ff2ec4;
+  --cyan: #3df5ff;
+  --gold: #ffd166;
+  --green: #4ade80;
+  --text: #e8e3f5;
+  --text-dim: #9c92b8;
+
+  /* Typo */
+  --font-display: "Press Start 2P", monospace;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Pixel radius signature */
+  --pixel: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 46, 196, 0.12), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(61, 245, 255, 0.10), transparent 40%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   TITRES — le pixel-font est réservé aux titres, avec parcimonie
+   ============================================================ */
+
+h1, h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 2rem 0 1.5rem;
+  color: var(--cyan);
+  text-shadow: 3px 3px 0 rgba(255, 46, 196, 0.35);
+}
+
+h1::before {
+  content: "▶ ";
+  color: var(--pink);
+}
+
+h2 {
+  font-size: 0.85rem;
+  margin: 0 0 0.6rem;
+}
+
+/* ============================================================
+   NAVIGATION / LIENS INTERNES
+   ============================================================ */
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 2px dashed transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+a:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   LISTE DE RESSOURCES — chaque <li> = carte de quête
+   ============================================================ */
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 0 1.5rem 3rem;
+}
+
+li {
+  position: relative;
+  background: var(--panel);
+  border: 3px solid var(--panel-border);
+  padding: 1.1rem 1.1rem 1.3rem;
+  box-shadow:
+    6px 6px 0 rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.02);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+li:hover {
+  transform: translate(-3px, -3px);
+  border-color: var(--pink);
+  box-shadow:
+    9px 9px 0 rgba(255, 46, 196, 0.35),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.04);
+}
+
+li h2 a,
+li a {
+  color: var(--text);
+  border: none;
+}
+
+li h2 {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+}
+
+li h2:hover,
+li a:hover h2 {
+  color: var(--pink);
+}
+
+/* ============================================================
+   BADGES / TAGS — "jetons d'arcade" (type, statut, catégorie)
+   Compatible avec la classe .fr-tag déjà utilisée dans le code
+   ============================================================ */
+
+.fr-tag,
+li p {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 0.25rem 0.55rem;
+  margin: 0 0.3rem 0.3rem 0;
+  color: var(--bg);
+  background: var(--cyan);
+  border: 2px solid var(--bg);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.fr-tag:nth-of-type(2n) {
+  background: var(--pink);
+}
+
+.fr-tag:nth-of-type(3n) {
+  background: var(--gold);
+}
+
+/* ============================================================
+   PAGE DE DÉTAIL — la quête ouverte
+   ============================================================ */
+
+article {
+  max-width: 680px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  background: var(--panel);
+  border: 3px solid var(--panel-border);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+article h2 {
+  font-size: 1rem;
+  color: var(--cyan);
+  margin-top: 1rem;
+}
+
+article p {
+  color: var(--text-dim);
+}
+
+article time {
+  font-family: var(--font-mono);
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ============================================================
+   FORMULAIRES — pupitre d'arcade
+   ============================================================ */
+
+form {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 1.75rem;
+  background: var(--bg-alt);
+  border: 3px solid var(--panel-border);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+form label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cyan);
+  margin-top: 0.75rem;
+}
+
+form input,
+form select,
+form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--panel-border);
+  padding: 0.6rem 0.7rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: var(--text-dim);
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(255, 46, 196, 0.25);
+}
+
+form span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #ff6b8b;
+}
+
+form span::before {
+  content: "✕ ";
+}
+
+/* ============================================================
+   BOUTON — le gros bouton "start"
+   ============================================================ */
+
+button[type="submit"] {
+  margin-top: 1.5rem;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--bg);
+  background: var(--gold);
+  border: 3px solid var(--bg);
+  padding: 0.9rem 1.5rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+}
+
+button[type="submit"]:hover {
+  background: var(--pink);
+  color: var(--text);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.6);
+}
+
+button[type="submit"]:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+}
+
+button[type="submit"]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   FILTRES (selects hors formulaire, ex: liste des ressources)
+   ============================================================ */
+
+div > select {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  background: var(--bg-alt);
+  border: 2px solid var(--panel-border);
+  padding: 0.5rem 0.7rem;
+  margin: 0 0.75rem 1.5rem 0;
+}
+
+/* ============================================================
+   ACCESSIBILITÉ — moins de mouvement si demandé
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.1rem;
+    padding: 0 1.5rem;
+  }
+
+  ul {
+    grid-template-columns: 1fr;
+    padding: 0 1rem 2rem;
+  }
+
+  form {
+    margin: 1.5rem 1rem;
+    padding: 1.25rem;
+  }
+}
