@@ -1,167 +1,310 @@
-.app-shell {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px 20px 48px;
+/* ============================================================
+   MINILEARNING — thème "Catastrophe visuelle"
+   Tout ce qu'il ne faut jamais faire, réuni au même endroit. Exprès. 😅
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+:root {
+  --rose: #ff00ff;
+  --vert: #00ff00;
+  --jaune: #ffff00;
+  --orange: #ff6600;
+  --bleu: #0000ff;
+  --rouge: #ff0000;
 }
 
-.top-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+* {
+  box-sizing: border-box;
+  cursor: help !important;
 }
 
-.nav-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: #e2e8f0;
-    color: #0f172a;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Comic Sans MS", "Comic Neue", cursive;
+  font-size: 19px;
+  color: var(--rouge);
+  background-color: var(--jaune);
+  background-image:
+    repeating-linear-gradient(45deg, var(--rose) 0 10px, var(--vert) 10px 20px, var(--bleu) 20px 30px, var(--orange) 30px 40px);
+  text-align: center;
 }
 
-.nav-btn:hover,
-.nav-btn.active {
-    background: #2563eb;
-    color: white;
+/* rien n'est jamais aligné, tout tourne un peu */
+h1, h2, p, span, label, a, li {
+  text-shadow:
+    2px 2px 0 var(--vert),
+    -2px -2px 0 var(--bleu),
+    3px -3px 0 var(--jaune);
 }
 
+h1,
 .page-title {
-    margin: 0 0 8px;
-    font-size: 2rem;
-    color: #111827;
+  font-size: 3.5rem;
+  color: var(--rose);
+  background: var(--vert);
+  border: 8px dashed var(--rouge);
+  padding: 1rem;
+  margin: 2rem;
+  transform: rotate(-6deg) scaleX(1.15);
+  animation: clignote 0.6s steps(1) infinite, tourne 4s linear infinite;
+}
+
+h1::before,
+.page-title::before {
+  content: "★☆★ ";
+}
+
+h1::after,
+.page-title::after {
+  content: " ★☆★";
+}
+
+@keyframes clignote {
+  50% { color: var(--jaune); background: var(--bleu); }
+}
+
+@keyframes tourne {
+  0% { transform: rotate(-6deg) scaleX(1.15); }
+  50% { transform: rotate(6deg) scaleX(1.15); }
+  100% { transform: rotate(-6deg) scaleX(1.15); }
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--bleu);
+  background: var(--orange);
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  transform: skew(-10deg, 3deg);
+  border: 5px double var(--vert);
 }
 
 .page-subtitle {
-    margin: 0 0 20px;
-    color: #64748b;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--vert);
+  letter-spacing: 3px;
+  animation: clignote 0.4s steps(1) infinite;
 }
 
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 20px;
+a {
+  color: var(--bleu);
+  background: var(--jaune);
+  text-decoration: underline overline wavy var(--rouge);
+  font-weight: bold;
+  padding: 0 0.3rem;
 }
 
-.filters select,
-.form-card input,
-.form-card select,
-.form-card textarea,
-.form-card button {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    background-color: #fff;
+a:visited {
+  color: var(--vert);
 }
 
-.filters select {
-    max-width: 220px;
+a:hover {
+  color: var(--rouge);
+  background: var(--bleu);
+  animation: tourne 0.3s linear infinite;
 }
 
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: repeating-linear-gradient(90deg, var(--rouge) 0 15px, var(--jaune) 15px 30px);
+}
+
+.nav-btn {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--rose);
+  background: var(--vert);
+  border: 6px ridge var(--bleu);
+  padding: 0.8rem 1.5rem;
+  text-decoration: blink;
+  transform: rotate(4deg);
+}
+
+.nav-btn:hover {
+  background: var(--rouge);
+  color: var(--jaune);
+  transform: rotate(-8deg) scale(1.3);
+}
+
+.nav-btn.active {
+  background: var(--orange);
+  border-style: dotted;
+}
+
+ul,
 .resource-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 16px;
+  list-style: none;
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
 }
 
-.resource-card,
-.form-card,
-.detail-card {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 18px;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+li,
+.resource-card {
+  background: radial-gradient(var(--rose), var(--jaune), var(--vert));
+  border: 10px groove var(--bleu);
+  padding: 2rem;
+  width: 260px;
+  transform: rotate(-8deg);
+  box-shadow: 15px 15px 0 var(--rouge), -8px -8px 0 var(--bleu);
+}
+
+li:nth-child(2n) {
+  transform: rotate(9deg);
+}
+
+li:nth-child(3n) {
+  transform: rotate(-3deg) scale(1.1);
+}
+
+li h2 {
+  font-size: 1.5rem;
+}
+
+.fr-tag,
+li p {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--jaune);
+  background: var(--rouge);
+  border: 4px dotted var(--vert);
+  padding: 0.4rem 0.8rem;
+  margin: 0.3rem;
+  transform: rotate(8deg);
+  text-transform: uppercase;
 }
 
 .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.fr-tag {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: #e0f2fe;
-    color: #0369a1;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+article,
+.detail-card {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 3rem;
+  background: repeating-radial-gradient(circle, var(--vert) 0 10px, var(--rose) 10px 20px);
+  border: 12px double var(--rouge);
+  transform: rotate(2deg);
 }
 
-.resource-card h2,
-.detail-card h2 {
-    margin: 8px 0 6px;
-    color: #111827;
+article time {
+  font-size: 1.6rem;
+  color: var(--bleu);
+  background: var(--jaune);
+  padding: 0.2rem 0.6rem;
 }
 
-.resource-card p,
-.detail-card p {
-    margin: 4px 0;
-    color: #475569;
-}
-
+form,
 .form-card {
-    max-width: 620px;
-    margin: 8px auto 0;
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: var(--rose);
+  border: 10px ridge var(--vert);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-1.5deg);
 }
 
 .field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 12px;
+  width: 100%;
+  margin-top: 1.5rem;
 }
 
-.form-card label {
-    font-weight: 600;
-    color: #334155;
+form label {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--jaune);
+  background: var(--bleu);
+  padding: 0.4rem;
+  transform: rotate(-2deg);
 }
 
-.form-card button {
-    margin-top: 10px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
+form input,
+form select,
+form textarea {
+  width: 100%;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 1.2rem;
+  color: var(--rouge);
+  background: var(--jaune);
+  border: 5px dashed var(--bleu);
+  padding: 0.8rem;
+  outline: none;
+  margin-top: 0.4rem;
 }
 
-.form-card button:hover {
-    background: #1d4ed8;
+form input:focus,
+form select:focus,
+form textarea:focus {
+  background: var(--vert);
+  border-color: var(--rose);
 }
 
-.form-card span {
-    color: #dc2626;
-    font-size: 0.9rem;
+form span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--jaune);
+  background: var(--rouge);
+  padding: 0.3rem 0.6rem;
+  margin-top: 0.3rem;
+  animation: clignote 0.5s steps(1) infinite;
 }
 
-@media (max-width: 768px) {
-    .app-shell {
-        padding: 16px 14px 32px;
-    }
-
-    .top-nav {
-        flex-direction: column;
-    }
-
-    .nav-btn {
-        width: 100%;
-    }
-
-    .page-title {
-        font-size: 1.6rem;
-    }
+form span::before {
+  content: "🚨🚨 ERREUR CATASTROPHIQUE 🚨🚨 ";
 }
+
+button[type="submit"] {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--vert);
+  background: var(--rouge);
+  border: 8px outset var(--jaune);
+  padding: 1.2rem 2.5rem;
+  transform: rotate(5deg);
+  animation: tourne 1s linear infinite;
+}
+
+button[type="submit"]:hover {
+  background: var(--bleu);
+  color: var(--orange);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.filters select,
+div > select {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--rose);
+  background: var(--vert);
+  border: 5px solid var(--bleu);
+  padding: 0.5rem;
+}
+
+/* même le "reduced motion" est ignoré, parce que ce thème n'a
+   aucune notion de bon goût ni de bonnes pratiques 😇 */

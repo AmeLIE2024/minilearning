@@ -13,7 +13,7 @@ export default function ResourceDetail() {
     }, [id])
 
     if (resourceDetail === undefined) return <p>Chargement en cours</p>
-
+    
     const createdAtDate = new Date(resourceDetail.createdAt);
     return (
         <>
